@@ -8,6 +8,14 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+        cormorant: ['Cormorant', 'serif'],
+      },
+      backgroundImage: {
+        'custom-gradient-overlay':
+          'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.5) 100%)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
