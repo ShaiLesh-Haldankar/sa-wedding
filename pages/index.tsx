@@ -35,7 +35,7 @@ export default function Home() {
         {/* Gradient Overlay */}
         <div className="absolute top-0 left-0 w-full h-full bg-custom-gradient-overlay z-[-1]" />
       </div>
-      <div className="bg-[#EAD9C9] w-full relative rounded-b-[200px] pb-[60px]">
+      <div data-aos="fade-up" className="bg-[#EAD9C9] w-full relative rounded-b-[200px] pb-[60px]">
         <div className=" absolute top-[-300px] left-[50%] transform translate-x-[-50%]">
           <Image src={'/images/leafs.svg'} alt="leaf" height={1080} width={1920} className="h-[600px] w-auto relative" />
           <div className="bg-white font-cormorant h-[350px] w-[350px] text-[48px] rounded-[50%] absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center">
@@ -60,7 +60,7 @@ export default function Home() {
         style={{ backgroundImage: `url('/images/couple.png')`, backgroundPositionY: '-280px' }}
       >
         {/* Your Section Content */}
-        <p className="text-[32px] text-white">Your presence brings joy, happiness,<br /> and blessings to our marriage.</p>
+        <p data-aos="fade-up" className="text-[32px] text-white">Your presence brings joy, happiness,<br /> and blessings to our marriage.</p>
       </div>
     </div>
   );
@@ -84,18 +84,18 @@ const Slider: React.FC = () => {
   const getSlideClass = (index: number): string => {
     if (index === currentIndex) return 'z-10 scale-100'; // Center slide
     if (index === (currentIndex + 1) % slides.length) return 'z-5 translate-x-full scale-75'; // Next slide
-    if (index === (currentIndex - 1 + slides.length) % slides.length) return 'z-5 -translate-x-full scale-75'; // Previous slide
+    if (index === (currentIndex - 1 + slides.length) % slides.length) return 'z-4 -translate-x-full scale-75'; // Previous slide
     return 'opacity-0 scale-50'; // Hidden slides
   };
 
   return (
-    <div className="py-20">
+    <div data-aos="fade-up" className="py-20">
       <div className="text-center text-[#787878]">
-        <p className="tracking-widest text-[16px]">THE PRE-WEDDING PHOTOGRAPHY</p>
-        <h6 className="text-[60px] font-cormorant">OUR GALLERY</h6>
+        <p data-aos="fade-left" className="tracking-widest text-[16px]">THE PRE-WEDDING PHOTOGRAPHY</p>
+        <h6 data-aos="fade-right" className="text-[60px] font-cormorant">OUR GALLERY</h6>
       </div>
 
-      <div className="relative w-full h-[500px]">
+      <div className="relative w-full h-[600px]">
         {/* Slider Container */}
         <div className="relative flex items-center justify-center w-full h-full">
           {slides.map((_, index) => (
@@ -105,7 +105,8 @@ const Slider: React.FC = () => {
               className={`absolute cursor-pointer w-full max-w-[550px] h-[400px] bg-gray-300 flex items-center justify-center text-xl font-bold transition-transform duration-500 ease-in-out ${getSlideClass(index)
                 }`}
             >
-              Slide {index + 1}
+              {/* Slide {index + 1} */}
+              <Image src={"/images/hall.png"} alt="hall" height={1080} width={1920} className="object-cover w-full h-full" />
             </span>
           ))}
         </div>
@@ -119,13 +120,16 @@ const Slider: React.FC = () => {
 
 
 const Schedule = () => {
-  return <div className="w-full flex items-center gap-20 px-20 py-12"
+  return <div data-aos="fade-up" className="w-full flex items-center gap-20 px-20 py-20"
     style={{
       background: 'linear-gradient(45deg, #EAD9C9, #FFFFFF)',
     }}
   >
     <div>
-      <div className="w-[510px] h-[510px]">
+      <div className="w-[510px] h-[510px] relative">
+        <Image src={"/images/leafs.png"} alt="" height={1080} width={1920} className="w-auto h-auto absolute left-[-50px] top-[-50px]" />
+        <Image src={"/images/leafs.png"} alt="" height={1080} width={1920} className="w-auto h-auto absolute bottom-[-50px] right-[-50px] transform scale-y-[-1] scale-x-[-1]" />
+
         <Image src={'/images/venue.png'} alt="venue" height={1080} width={1920} />
       </div>
       <div className="flex gap-2 justify-center mt-8">
@@ -190,28 +194,34 @@ const Schedule = () => {
 
 const RouteSection: React.FC = () => {
   return (
-    <section className="relative w-full bg-white flex  h-[560px] overflow-hidden px-20 mb-20">
+    <div data-aos="fade-up" className="my-32">
+      <div className="text-center mb-20 text-[#787878]">
+        <p data-aos="fade-left">SUBTITLE</p>
+        <h6 data-aos="fade-right" className="font-cormorant text-[60px]">ROUTE</h6>
+      </div>
+      <section className="relative w-full bg-white flex  h-[560px]  px-20 ">
+        <Image src={"/images/branches.png"} alt="branch" height={1080} width={1920} className="absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" />
+        <div className="w-[400px] h-[560px]">
+          <div className="w-full h-[480px] overflow-hidden">
+            <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />
 
-      <div className="w-[400px] h-[560px]">
-        <div className="w-full h-[480px] overflow-hidden">
-          <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />
+          </div>
+          <div className="h-[80px] bg-[#EAD9C9] text-center flex justify-center items-center">
+            <p className="text-[24px]">Sarji Convention Hall</p>
+          </div>
 
         </div>
-        <div className="h-[80px] bg-[#EAD9C9] text-center flex justify-center items-center">
-          <p className="text-[24px]">Sarji Convention Hall</p>
+        <div className="w-[calc(100%-400px)] h-full">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.074950432517!2d77.54612891479957!3d13.029877590827874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16905e707b63%3A0x7bcb20c828c64069!2sConvention%20Hall!5e0!3m2!1sen!2sin!4v1684048092558!5m2!1sen!2sin"
+            width="100%"
+            height="560"
+            allowFullScreen
+            loading="lazy"
+            className=""
+          />
         </div>
-
-      </div>
-      <div className="w-[calc(100%-400px)] h-full">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.074950432517!2d77.54612891479957!3d13.029877590827874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16905e707b63%3A0x7bcb20c828c64069!2sConvention%20Hall!5e0!3m2!1sen!2sin!4v1684048092558!5m2!1sen!2sin"
-          width="100%"
-          height="560"
-          allowFullScreen
-          loading="lazy"
-          className=""
-        />
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
