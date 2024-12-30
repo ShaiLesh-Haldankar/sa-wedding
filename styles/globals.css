@@ -49,3 +49,12 @@ body {
   font-family: 'Montserrat', sans-serif;
 
 }
+.bottom-img{
+  background-position-y: -280px;
+}
+@media (max-width: 640px) {
+  .bottom-img{
+    background-position-y: 0;
+  }
+
+}
