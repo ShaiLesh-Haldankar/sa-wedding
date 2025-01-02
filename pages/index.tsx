@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       <Head>
-        <title>Surjith weds Amrita</title>
-        <meta name="description" content="Join us in celebrating the wedding of Surjith and Amrita. Your presence brings joy, happiness, and blessings to our marriage." />
+        <title>Surjith weds Amrutha</title>
+        <meta name="description" content="Join us in celebrating the wedding of Surjith and Amrutha. Your presence brings joy, happiness, and blessings to our marriage." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/images/SA.svg" />
       </Head>
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="bg-white font-cormorant h-[250px] md:h-[350px] w-[250px] md:w-[350px] text-[32px] md:text-[48px] rounded-[50%] absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%] flex flex-col justify-center items-center">
             <p>Surjith</p>
             <p>Weds</p>
-            <p>Amrita</p>
+            <p>Amrutha</p>
 
           </div>
         </div>
