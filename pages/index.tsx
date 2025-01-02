@@ -1,20 +1,16 @@
+import Head from "next/head";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import { useState } from "react";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
     <div className="w-full overflow-hidden">
+      <Head>
+        <title>Surjith weds Amrita</title>
+        <meta name="description" content="Join us in celebrating the wedding of Surjith and Amrita. Your presence brings joy, happiness, and blessings to our marriage." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/images/SA.svg" />
+      </Head>
       <div className="relative h-screen overflow-hidden">
         {/* Logo */}
         <Image
@@ -79,7 +75,7 @@ export default function Home() {
 
 const Slider: React.FC = () => {
   // Array of slides (replace with image URLs later)
-  const slides: number[] = [1, 2, 3, 4, 5];
+  const slides: string[] = ['/images/gallery-01.png', '/images/gallery-02.png', '/images/gallery-03.png', '/images/gallery-04.png', '/images/gallery-05.png', '/images/gallery-06.png', '/images/gallery-07.png', '/images/gallery-08.png', '/images/gallery-09.png', '/images/gallery-10.png',];
 
   // State for the current index
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -115,7 +111,7 @@ const Slider: React.FC = () => {
       <div className="relative w-full h-[500px] md:h-[600px]">
         {/* Slider Container */}
         <div className="relative flex items-center justify-center w-full h-full">
-          {slides.map((_, index) => (
+          {slides.map((img, index) => (
             <span
               key={index}
               onClick={() => goToSlide(index)}
@@ -123,7 +119,7 @@ const Slider: React.FC = () => {
                 }`}
             >
               {/* Slide {index + 1} */}
-              <Image src={"/images/hall.png"} alt="hall" height={1080} width={1920} className="object-cover w-full h-full" />
+              <Image src={img} alt="hall" height={1080} width={1920} className="object-cover w-full h-full" />
             </span>
           ))}
         </div>
@@ -151,77 +147,89 @@ const Slider: React.FC = () => {
 
 
 const Schedule = () => {
-  return <div data-aos="fade-up" className="w-full flex flex-col md:flex-row items-center justify-between gap-20 px-0 md:px-20 py-0 md:py-20"
-    style={{
-      background: 'linear-gradient(45deg, #EAD9C9, #FFFFFF)',
-    }}
-  >
-    <div>
-      <div className="w-full md:w-[510px] md:h-[510px] relative">
-        <Image src={"/images/leafs.png"} alt="" height={1080} width={1920} className="w-[150px] md:w-auto h-[150px] md:h-auto absolute left-0 md:left-[-50px] top-[-50px]" />
-        <Image src={"/images/leafs.png"} alt="" height={1080} width={1920} className="w-[150px] md:w-auto h-[150px] md:h-auto absolute bottom-[-50px] right-0 md:right-[-50px] transform scale-y-[-1] scale-x-[-1]" />
+  const images = ['/images/venue-01.png', '/images/venue-02.png', '/images/venue-03.png'];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-        <Image src={'/images/venue.png'} alt="venue" height={1080} width={1920} />
-      </div>
-      <div className="flex gap-2 justify-center mt-8">
-        <button className="h-4 w-4 rounded-[50%] bg-black" />
-        <button className="h-4 w-4 rounded-[50%] bg-black" />
-        <button className="h-4 w-4 rounded-[50%] bg-black" />
+  // Automatically change the image every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [images.length]);
+
+  return (
+    <div
+      data-aos="fade-up"
+      className="w-full flex flex-col md:flex-row items-center justify-between gap-20 px-0 md:px-20 py-0 md:py-20"
+      style={{
+        background: 'linear-gradient(45deg, #EAD9C9, #FFFFFF)',
+      }}
+    >
+      <div>
+        <div className="w-full md:w-[510px] md:h-[510px] relative">
+          {/* Decorative Leafs */}
+          <Image
+            src={'/images/leafs.png'}
+            alt=""
+            height={1080}
+            width={1920}
+            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute left-0 md:left-[-50px] top-[-50px]"
+          />
+          <Image
+            src={'/images/leafs.png'}
+            alt=""
+            height={1080}
+            width={1920}
+            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute bottom-[0px] right-0 md:right-[-50px] transform scale-y-[-1] scale-x-[-1]"
+          />
+
+          {/* Carousel Image */}
+          <Image
+            src={images[currentIndex]}
+            alt="venue"
+            height={1080}
+            width={1920}
+            className="object-cover md:w-[510px] max-h-[350px] md:max-h-none h-auto md:h-[510px]"
+          />
+        </div>
+
+        {/* Carousel Navigation Buttons */}
+        <div className="flex gap-2 justify-center mt-8">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)} // Set slide manually
+              className={`h-4 w-4 rounded-[50%] ${currentIndex === index ? 'bg-black' : 'bg-gray-400'
+                }`}
+            />
+          ))}
+        </div>
       </div>
 
+      {/* Schedule Details */}
+      <div className="w-full md:w-[calc(100%-650px)] text-[#787878] px-5 md:px-0">
+        <h4 className="text-[32px] md:text-[60px] mb-8 capitalize font-cormorant whitespace-pre-line leading-none mt-4">{`We will plan your day, 
+        your way.`}</h4>
+        {[...Array(4)].map((_, index) => (
+          <div
+            key={index}
+            data-aos="fade-up"
+            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
+          >
+            <div className="flex gap-20">
+              <span>4st Feb 2025</span>
+              <span>Haldi</span>
+            </div>
+            <div>
+              <span>10AM</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-    <div className="w-full md:w-[calc(100%-650px)] text-[#787878] px-5 md:px-0">
-      <h4 className="text-[32px] md:text-[60px] mb-8 capitalize font-cormorant whitespace-pre-line leading-none mt-4">{`We will plan your day, 
-      your way.`}</h4>
-      <div data-aos="fade-up" className="w-full flex justify-between border-b border-black mb-10  text-[18px] md:text-[24px] text-[#353535]">
-        <div className="flex gap-20">
-          <span>4st Feb 2025 </span>
-          <span>Haldi</span>
-
-        </div>
-        <div>
-          <span>10AM</span>
-        </div>
-
-      </div>
-      <div data-aos="fade-up" className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]">
-        <div className="flex gap-20">
-          <span>4st Feb 2025 </span>
-          <span>Haldi</span>
-
-        </div>
-        <div>
-          <span>10AM</span>
-        </div>
-
-      </div>
-      <div data-aos="fade-up" className="w-full flex justify-between border-b border-black mb-10  text-[18px] md:text-[24px] text-[#353535]">
-        <div className="flex gap-20">
-          <span>4st Feb 2025 </span>
-          <span>Haldi</span>
-
-        </div>
-        <div>
-          <span>10AM</span>
-        </div>
-
-      </div>
-      <div data-aos="fade-up" className="w-full flex justify-between border-b border-black mb-10  text-[18px] md:text-[24px] text-[#353535]">
-        <div className="flex gap-20">
-          <span>4st Feb 2025 </span>
-          <span>Haldi</span>
-
-        </div>
-        <div>
-          <span>10AM</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-}
+  );
+};
 
 const RouteSection: React.FC = () => {
   return (
@@ -231,7 +239,7 @@ const RouteSection: React.FC = () => {
         <h6 data-aos="fade-right" className="font-cormorant text-[40px] md:text-[60px]">ROUTE</h6>
       </div>
       <section className="relative w-full bg-white flex flex-col md:flex-row  h-[560px]  px-5 md:px-20 ">
-        <Image src={"/images/branches.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" />
+        {/* <Image src={"/images/branches.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" /> */}
         <div className="w-full md:w-[400px] h-auto md:h-[560px]">
           <div className="w-full h-[480px] overflow-hidden">
             <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />

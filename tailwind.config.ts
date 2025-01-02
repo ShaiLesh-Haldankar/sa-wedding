@@ -14,7 +14,7 @@ export default {
       },
       backgroundImage: {
         'custom-gradient-overlay':
-          'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.5) 100%)',
+          'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.5) 100%)',
       },
       colors: {
         background: "var(--background)",
