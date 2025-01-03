@@ -122,7 +122,7 @@ const Slider: React.FC = () => {
 
       <div className="relative w-full h-[500px] md:h-[600px]">
         {/* Slider Container */}
-        <div className="relative flex items-center justify-center w-full h-full">
+        <div className="relative flex items-center justify-center w-full h-full ">
           {slides.map((img, index) => (
             <span
               title={img + ' ' + index}
@@ -150,7 +150,10 @@ const Slider: React.FC = () => {
               <Image src={img} alt="hall" layout="fill" className={`${getObjectSizeClass(index)} w-full h-full`} />
             </span>
           ))}
+          <Image alt="" src={"/images/circle.png"} height={1080} width={1920} className="w-[80vw] md:w-[20vw] h-auto absolute top-[-25%] md:top-[-10%] " />
+
         </div>
+
       </div>
       <div className="flex justify-between items-center mt-4 sm:flex sm:justify-center sm:gap-8 md:hidden px-4 mb-8 md:mb-0">
         <button
@@ -212,7 +215,7 @@ const Schedule = () => {
   return (
     <div
       data-aos="fade-up"
-      className="w-full flex flex-col md:flex-row items-center justify-between gap-20 px-0 md:px-20 py-0 md:py-20"
+      className="w-full flex flex-col md:flex-row items-center justify-between gap-20 px-0 md:px-40 py-0 md:py-20"
       style={{
         background: 'linear-gradient(45deg, #EAD9C9, #FFFFFF)',
       }}
@@ -289,7 +292,7 @@ const RouteSection: React.FC = () => {
         <p data-aos="fade-left">VENUE</p>
         <h6 data-aos="fade-right" className="font-cormorant text-[40px] md:text-[60px]">ROUTE</h6>
       </div>
-      <section className="relative w-full bg-white flex flex-col md:flex-row  h-[560px]  px-5 md:px-20 ">
+      <section className="relative w-full bg-white flex flex-col md:flex-row  h-[560px]  px-5 md:px-40 ">
         {/* <Image src={"/images/hall-border-left.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" /> */}
         <Image
             src={'/images/leafs.png'}
@@ -305,7 +308,7 @@ const RouteSection: React.FC = () => {
             width={1920}
             className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute bottom-[0px] right-0 transform scale-y-[-1] scale-x-[-1]"
           />
-        <div className="w-full md:w-[400px] h-auto md:h-[560px]">
+        <div className="w-full md:w-[25vw] h-auto md:h-[560px] relative">
           <div className="w-full h-[480px] overflow-hidden">
             <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />
 
@@ -315,9 +318,9 @@ const RouteSection: React.FC = () => {
           </div>
 
         </div>
-        <div className="w-full md:w-[calc(100%-400px)] h-[400px] md:h-full">
+        <div className="w-full md:w-[calc(100%-25vw)] h-[400px] md:h-full relative">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.992091061159!2d75.57388768267334!3d13.95907635755433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbbaed9696fa039%3A0xaa43f7a0d128044a!2sSarji%20Convention%20Hall!5e0!3m2!1sen!2sin!4v1735932322075!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5001.3232298206785!2d75.5761836760943!3d13.959071186454768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbbaed9696fa039%3A0xaa43f7a0d128044a!2sSarji%20Convention%20Hall!5e1!3m2!1sen!2sin!4v1735931877661!5m2!1sen!2sin"
             width="100%"
             height="560"
             allowFullScreen
