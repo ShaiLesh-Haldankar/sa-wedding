@@ -20,9 +20,15 @@ export default function Home() {
           width={75}
           className="mt-10 md:mt-20 ml-10 md:ml-20 sm:mt-10 sm:ml-10"
         />
-
+        {/* Background Image */}
+        <Image
+          src={'/images/hero.jpeg'}
+          alt="Couple"
+          layout="fill"
+          className="absolute top-0 left-0 w-full h-full object-cover z-[-2]"
+        />
         {/* Background Video */}
-        <video
+        {/* <video
           className="absolute top-0 left-0 w-full h-full object-cover z-[-2]"
           autoPlay
           loop
@@ -34,7 +40,7 @@ export default function Home() {
             type="video/mp4"
           />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
 
         {/* Gradient Overlay */}
         <div className="absolute top-0 left-0 w-full h-full bg-custom-gradient-overlay z-[-1]" />
@@ -62,7 +68,7 @@ export default function Home() {
       <RouteSection />
       <div
         className="bottom-img relative w-full py-16 bg-cover bg-center h-[400px] rounded-t-[0px] md:rounded-t-[200px] flex justify-center items-center text-center"
-        style={{ backgroundImage: `url('/images/couple.png')`, backgroundRepeat: "no-repeat" }}
+        style={{ backgroundImage: `url('/images/footer.jpeg')`, backgroundRepeat: "no-repeat", backgroundPosition: "center" }}
       >
         {/* Your Section Content */}
         <p data-aos="fade-up" className="text-[24px] md:text-[32px] text-white">Your presence brings joy, happiness,<br /> and blessings to our marriage.</p>
@@ -75,7 +81,7 @@ export default function Home() {
 
 const Slider: React.FC = () => {
   // Array of slides (replace with image URLs later)
-  const slides: string[] = ['/images/gallery-01.png', '/images/gallery-02.png', '/images/gallery-03.png', '/images/gallery-04.png', '/images/gallery-05.png', '/images/gallery-06.png', '/images/gallery-07.png', '/images/gallery-08.png', '/images/gallery-09.png', '/images/gallery-10.png',];
+  const slides: string[] = ['/images/gallery-00.jpeg', '/images/gallery-01.jpeg', '/images/gallery-02.jpeg', '/images/gallery-03.jpeg', '/images/gallery-04.jpeg', '/images/gallery-05.jpeg', '/images/gallery-06.jpeg', '/images/gallery-07.jpeg', '/images/gallery-08.jpeg', '/images/gallery-09.jpeg', '/images/gallery-10.jpeg','/images/gallery-11.jpeg'];
 
   // State for the current index
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -101,6 +107,12 @@ const Slider: React.FC = () => {
     return 'opacity-0 scale-50'; // Hidden slides
   };
 
+  // Helper function to identify object-contain or object-cover
+  const getObjectSizeClass = (index: number): string => {
+    if (index === 6 || index === 10) return 'object-contain';
+    return 'object-cover';
+  }
+
   return (
     <div data-aos="fade-up" className="py-20">
       <div className="text-center text-[#787878]">
@@ -113,13 +125,29 @@ const Slider: React.FC = () => {
         <div className="relative flex items-center justify-center w-full h-full">
           {slides.map((img, index) => (
             <span
+              title={img + ' ' + index}
               key={index}
               onClick={() => goToSlide(index)}
-              className={`absolute cursor-pointer w-full max-w-[550px] h-[400px] bg-gray-300 flex items-center justify-center text-xl font-bold transition-transform duration-500 ease-in-out ${getSlideClass(index)
+              className={`absolute cursor-pointer w-full max-w-[550px] h-[400px] ${index !== 6 && index !== 10 && 'bg-gray-300'} flex items-center justify-center text-xl font-bold transition-transform duration-500 ease-in-out ${getSlideClass(index)
                 }`}
             >
+              {/* Decorative Leafs */}
+              <Image
+                src={'/images/bubbles.png'}
+                alt=""
+                height={1080}
+                width={1920}
+                className={` md:w-[25vw] md:h-[25vw] absolute right-[-40px] top-[-175px] ${index === currentIndex ? 'md:block' : 'hidden'}`}
+              />
+              <Image
+                src={'/images/dots.png'}
+                alt=""
+                height={1080}
+                width={1920}
+                className={` md:w-[20vw] md:h-[20vw] absolute bottom-[-150px] left-[-150px] ${index === currentIndex ? 'md:block' : 'hidden'}`}
+              />
               {/* Slide {index + 1} */}
-              <Image src={img} alt="hall" height={1080} width={1920} className="object-cover w-full h-full" />
+              <Image src={img} alt="hall" layout="fill" className={`${getObjectSizeClass(index)} w-full h-full`} />
             </span>
           ))}
         </div>
@@ -147,7 +175,7 @@ const Slider: React.FC = () => {
 
 
 const Schedule = () => {
-  const images = ['/images/venue-01.png', '/images/venue-02.png', '/images/venue-03.png'];
+  const images = ['/images/venue-01.png', '/images/venue-02.png', '/images/venue-03.png', '/images/venue-04.png'];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Automatically change the image every 5 seconds
@@ -157,6 +185,29 @@ const Schedule = () => {
     }, 5000);
     return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [images.length]);
+
+  const events = [
+    {
+      date: 3,
+      name: 'Haldi',
+      time: '10 AM'
+    },
+    {
+      date: 5,
+      name: 'Mehandi',
+      time: '10 AM'
+    },
+    {
+      date: 6,
+      name: 'Reception',
+      time: '6:30 PM Onwards'
+    },
+    {
+      date: 7,
+      name: 'Muhurtham',
+      time: '9:40 AM - 10:30 AM'
+    },
+  ]
 
   return (
     <div
@@ -190,7 +241,7 @@ const Schedule = () => {
             alt="venue"
             height={1080}
             width={1920}
-            className="object-cover md:w-[510px] max-h-[350px] md:max-h-none h-auto md:h-[510px]"
+            className="object-contain md:w-[510px] h-[510px]"
           />
         </div>
 
@@ -211,56 +262,21 @@ const Schedule = () => {
       <div className="w-full md:w-[calc(100%-650px)] text-[#787878] px-5 md:px-0">
         <h4 className="text-[32px] md:text-[60px] mb-8 capitalize font-cormorant whitespace-pre-line leading-none mt-4">{`Exciting Events Await, 
         Come Be a Part of the Celebration!`}</h4>
-        {/* {[...Array(4)].map((_, index) => ( */}
+        {events.map((event, index) => (
           <div
             data-aos="fade-up"
             className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
           >
             <div className="flex gap-20">
-              <span>3<sup>rd</sup> Feb 2025</span>
-              <span>Haldi</span>
+              <span>{ event.date }<sup>{ event.date === 3 && 'rd' || 'th' }</sup> Feb 2025</span>
+              <span className="hidden md:block">{ event.name }</span>
             </div>
-            <div>
-              <span>10 AM</span>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
-          >
-            <div className="flex gap-20">
-              <span>5<sup>th</sup> Feb 2025</span>
-              <span>Mehandi</span>
-            </div>
-            <div>
-              <span>10 AM</span>
+            <div className="flex flex-col text-right">
+              <span className="block md:hidden">{ event.name }</span>
+              <span>{ event.time }</span>
             </div>
           </div>
-          <div
-            data-aos="fade-up"
-            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
-          >
-            <div className="flex gap-20">
-              <span>6<sup>th</sup> Feb 2025</span>
-              <span>Reception</span>
-            </div>
-            <div>
-              <span>6:30 PM Onwards</span>
-            </div>
-          </div>
-          <div
-            data-aos="fade-up"
-            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
-          >
-            <div className="flex gap-20">
-              <span>7<sup>th</sup> Feb 2025</span>
-              <span>Muhurtham</span>
-            </div>
-            <div>
-              <span>9:40 AM to 10:30 AM</span>
-            </div>
-          </div>
-        {/* ))} */}
+        ))}
       </div>
     </div>
   );
@@ -270,11 +286,25 @@ const RouteSection: React.FC = () => {
   return (
     <div data-aos="fade-up" className="mb-[700px] md:mb-32 my-32">
       <div className="text-center mb-8 md:mb-20 text-[#787878]">
-        <p data-aos="fade-left">SUBTITLE</p>
+        <p data-aos="fade-left">VENUE</p>
         <h6 data-aos="fade-right" className="font-cormorant text-[40px] md:text-[60px]">ROUTE</h6>
       </div>
       <section className="relative w-full bg-white flex flex-col md:flex-row  h-[560px]  px-5 md:px-20 ">
-        {/* <Image src={"/images/branches.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" /> */}
+        {/* <Image src={"/images/hall-border-left.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" /> */}
+        <Image
+            src={'/images/leafs.png'}
+            alt=""
+            height={1080}
+            width={1920}
+            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute left-0 "
+          />
+          <Image
+            src={'/images/leafs.png'}
+            alt=""
+            height={1080}
+            width={1920}
+            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute bottom-[0px] right-0 transform scale-y-[-1] scale-x-[-1]"
+          />
         <div className="w-full md:w-[400px] h-auto md:h-[560px]">
           <div className="w-full h-[480px] overflow-hidden">
             <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />
@@ -287,7 +317,7 @@ const RouteSection: React.FC = () => {
         </div>
         <div className="w-full md:w-[calc(100%-400px)] h-[400px] md:h-full">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.074950432517!2d77.54612891479957!3d13.029877590827874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16905e707b63%3A0x7bcb20c828c64069!2sConvention%20Hall!5e0!3m2!1sen!2sin!4v1684048092558!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.992091061159!2d75.57388768267334!3d13.95907635755433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbbaed9696fa039%3A0xaa43f7a0d128044a!2sSarji%20Convention%20Hall!5e0!3m2!1sen!2sin!4v1735932322075!5m2!1sen!2sin" 
             width="100%"
             height="560"
             allowFullScreen
