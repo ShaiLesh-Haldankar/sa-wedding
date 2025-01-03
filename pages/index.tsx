@@ -150,7 +150,6 @@ const Slider: React.FC = () => {
               <Image src={img} alt="hall" layout="fill" className={`${getObjectSizeClass(index)} w-full h-full`} />
             </span>
           ))}
-          <Image alt="" src={"/images/circle.png"} height={1080} width={1920} className="w-[80vw] md:w-[20vw] h-auto absolute top-[-25%] md:top-[-10%] " />
 
         </div>
 
@@ -197,7 +196,7 @@ const Schedule = () => {
     },
     {
       date: 5,
-      name: 'Mehandi',
+      name: 'Mehndi',
       time: '10 AM'
     },
     {
@@ -268,7 +267,7 @@ const Schedule = () => {
         {events.map((event, index) => (
           <div
             data-aos="fade-up"
-            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
+            className="w-full flex justify-between border-b border-black mb-10 text-[16px] md:text-[20px] text-[#353535]"
           >
             <div className="flex gap-20">
               <span>{ event.date }<sup>{ event.date === 3 && 'rd' || 'th' }</sup> Feb 2025</span>
@@ -293,21 +292,6 @@ const RouteSection: React.FC = () => {
         <h6 data-aos="fade-right" className="font-cormorant text-[40px] md:text-[60px]">ROUTE</h6>
       </div>
       <section className="relative w-full bg-white flex flex-col md:flex-row  h-[560px]  px-5 md:px-40 ">
-        {/* <Image src={"/images/hall-border-left.png"} alt="branch" height={1080} width={1920} className="hidden md:block absolute w-auto h-auto left-[10px] top-[-60px] z-[0]" /> */}
-        <Image
-            src={'/images/leafs.png'}
-            alt=""
-            height={1080}
-            width={1920}
-            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute left-0 "
-          />
-          <Image
-            src={'/images/leafs.png'}
-            alt=""
-            height={1080}
-            width={1920}
-            className="w-[120px] md:w-[10vw] h-[120px] md:h-[10vw] absolute bottom-[0px] right-0 transform scale-y-[-1] scale-x-[-1]"
-          />
         <div className="w-full md:w-[25vw] h-auto md:h-[560px] relative">
           <div className="w-full h-[480px] overflow-hidden">
             <Image src={"/images/hall.png"} alt="Hall" height={1080} width={1920} className="object-cover h-full" />
