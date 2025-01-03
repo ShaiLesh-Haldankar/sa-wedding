@@ -53,7 +53,7 @@ export default function Home() {
         <div className="pt-[200px] text-center font-cormorant">
           <h5 className="text-[32px] md:text-[40px] leading-none text-[#787878]">Two hearts, one love, and a lifetime of memories </h5>
           <h5 className="text-[32px] md:text-[40px] leading-none text-[#787878]">save the date!</h5>
-          <p className="text-[32px] md:text-[40px] font-bold text-[#787878]">06 th Feb 2025</p>
+          <p className="text-[32px] md:text-[40px] font-bold text-[#787878]">07<sup>th</sup> Feb 2025</p>
 
         </div>
       </div>
@@ -104,7 +104,7 @@ const Slider: React.FC = () => {
   return (
     <div data-aos="fade-up" className="py-20">
       <div className="text-center text-[#787878]">
-        <p data-aos="fade-left" className="tracking-widest text-[16px]">THE PRE-WEDDING PHOTOGRAPHY</p>
+        <p data-aos="fade-left" className="tracking-widest text-[16px]">THE PRE-WEDDING SNAPS</p>
         <h6 data-aos="fade-right" className="text-[40px] md:text-[60px] font-cormorant">OUR GALLERY</h6>
       </div>
 
@@ -212,23 +212,58 @@ const Schedule = () => {
 
       {/* Schedule Details */}
       <div className="w-full md:w-[calc(100%-650px)] text-[#787878] px-5 md:px-0">
-        <h4 className="text-[32px] md:text-[60px] mb-8 capitalize font-cormorant whitespace-pre-line leading-none mt-4">{`We will plan your day, 
-        your way.`}</h4>
-        {[...Array(4)].map((_, index) => (
+        <h4 className="text-[32px] md:text-[60px] mb-8 capitalize font-cormorant whitespace-pre-line leading-none mt-4">{`Exciting Events Await, 
+        Come Be a Part of the Celebration!`}</h4>
+        {/* {[...Array(4)].map((_, index) => ( */}
           <div
-            key={index}
             data-aos="fade-up"
             className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
           >
             <div className="flex gap-20">
-              <span>4st Feb 2025</span>
+              <span>3<sup>rd</sup> Feb 2025</span>
               <span>Haldi</span>
             </div>
             <div>
-              <span>10AM</span>
+              <span>10 AM</span>
             </div>
           </div>
-        ))}
+          <div
+            data-aos="fade-up"
+            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
+          >
+            <div className="flex gap-20">
+              <span>5<sup>th</sup> Feb 2025</span>
+              <span>Mehandi</span>
+            </div>
+            <div>
+              <span>10 AM</span>
+            </div>
+          </div>
+          <div
+            data-aos="fade-up"
+            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
+          >
+            <div className="flex gap-20">
+              <span>6<sup>th</sup> Feb 2025</span>
+              <span>Reception</span>
+            </div>
+            <div>
+              <span>6:30 PM Onwards</span>
+            </div>
+          </div>
+          <div
+            data-aos="fade-up"
+            className="w-full flex justify-between border-b border-black mb-10 text-[18px] md:text-[24px] text-[#353535]"
+          >
+            <div className="flex gap-20">
+              <span>7<sup>th</sup> Feb 2025</span>
+              <span>Muhurtham</span>
+            </div>
+            <div>
+              <span>9:40 AM to 10:30 AM</span>
+            </div>
+          </div>
+        {/* ))} */}
       </div>
     </div>
   );
