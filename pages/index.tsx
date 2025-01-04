@@ -125,7 +125,6 @@ const Slider: React.FC = () => {
         <div className="relative flex items-center justify-center w-full h-full ">
           {slides.map((img, index) => (
             <span
-              title={img + ' ' + index}
               key={index}
               onClick={() => goToSlide(index)}
               className={`absolute cursor-pointer w-full max-w-[550px] h-[400px] ${index !== 6 && index !== 10 && 'bg-gray-300'} flex items-center justify-center text-xl font-bold transition-transform duration-500 ease-in-out ${getSlideClass(index)
@@ -144,7 +143,7 @@ const Slider: React.FC = () => {
                 alt=""
                 height={1080}
                 width={1920}
-                className={` md:w-[20vw] md:h-[20vw] absolute bottom-[-150px] left-[-150px] ${index === currentIndex ? 'md:block' : 'hidden'}`}
+                className={`hidden md:w-[20vw] md:h-[20vw] absolute bottom-[-150px] left-[-150px] ${index === currentIndex ? 'md:block' : 'hidden'}`}
               />
               {/* Slide {index + 1} */}
               <Image src={img} alt="hall" layout="fill" className={`${getObjectSizeClass(index)} w-full h-full`} />
