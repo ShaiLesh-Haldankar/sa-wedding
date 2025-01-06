@@ -56,7 +56,7 @@ export default function Home() {
 
           </div>
         </div>
-        <div className="pt-[200px] text-center font-cormorant">
+        <div className="pt-[150px] md:pt-[200px] text-center font-cormorant">
           <h5 className="text-[32px] md:text-[40px] leading-none text-[#787878]">Two hearts, one love, and a lifetime of memories </h5>
           <h5 className="text-[32px] md:text-[40px] leading-none text-[#787878]">save the date!</h5>
           <p className="text-[32px] md:text-[40px] font-bold text-[#787878]">07<sup>th</sup> Feb 2025</p>
@@ -176,7 +176,7 @@ const Slider: React.FC = () => {
 
 
 const Schedule = () => {
-  const images = ['/images/venue-01.png', '/images/venue-02.png', '/images/venue-03.png', '/images/venue-04.png'];
+  const images = ['/images/venue-01.png', '/images/venue-02.png', '/images/venue-03.png', '/images/venue-04.png', '/images/venue-05.jpg'];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Automatically change the image every 5 seconds
@@ -218,7 +218,7 @@ const Schedule = () => {
   return (
     <div
       data-aos="fade-up"
-      className="w-full flex flex-col md:flex-row items-center justify-between gap-20 px-0 md:px-40 py-0 md:py-20"
+      className="w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20 px-0 md:px-40 py-0 md:py-20"
       style={{
         background: 'linear-gradient(45deg, #EAD9C9, #FFFFFF)',
       }}
