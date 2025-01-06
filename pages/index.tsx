@@ -208,6 +208,11 @@ const Schedule = () => {
       name: 'Muhurtham',
       time: '9:40 AM - 10:30 AM'
     },
+    {
+      date: 9,
+      name: 'Satyanarayana Pooja',
+      time: '9:30 AM onwards'
+    }
   ]
 
   return (
@@ -270,7 +275,7 @@ const Schedule = () => {
           >
             <div className="flex gap-20">
               <span>{ event.date }<sup>{ event.date === 3 && 'rd' || 'th' }</sup> Feb 2025</span>
-              <span className="hidden md:block">{ event.name }</span>
+              <span className="hidden md:block">{ event.name.split(' ')[0] } <br /> { event.name.split(' ')[1] }</span>
             </div>
             <div className="flex flex-col text-right">
               <span className="block md:hidden">{ event.name }</span>
